@@ -63,7 +63,7 @@ public class SecurityConfig {
                     .filter(s -> !s.isEmpty())
                     .forEach(patterns::add);
         }
-        // Also support any Vercel preview branch deployment and localhost
+ 
         if (!patterns.contains("https://*.vercel.app")) {
             patterns.add("https://*.vercel.app");
         }
@@ -78,7 +78,7 @@ public class SecurityConfig {
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setExposedHeaders(List.of("Authorization"));
-        configuration.setAllowCredentials(false);
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
